@@ -60,7 +60,6 @@ exports.login = function (req, res) {
 
 exports.register = async (req, res) => {
   const { fullname, email, phone, password, confirmation_password } = req.body;
-
   if (!fullname || !email || !phone || !password || !confirmation_password) {
     return res.status(400).json({ status: 400, message: "Field can't blank" });
   } else {
@@ -99,11 +98,11 @@ exports.register = async (req, res) => {
                         message: `Phone ${phone} already exist`,
                       });
                   } else {
-                    if (password != confirmation_password) {
+                    if (password != confirmation_password) {                   
                       return res
-                        .status(402)
+                        .status(400)
                         .json({
-                          status: 402,
+                          status: 400,
                           message: "Confirmation password doesn't match",
                         });
                     } else {

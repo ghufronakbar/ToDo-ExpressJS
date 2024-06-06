@@ -4,7 +4,7 @@ const config = require("../config/secret");
 function verifikasiUser(req, res, next) {
   // Ambil token dari header Authorization
   let token = req.headers["authorization"];
-  
+  console.log({token})
   if (token) {
     // Remove 'Bearer ' jika ada
     token = token.replace(/^Bearer\s+/, "");

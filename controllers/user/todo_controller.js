@@ -4,6 +4,7 @@ const connection = require("../../connection");
 
 exports.getTodos = async (req, res) => {
   const { id_user } = req.decoded
+  console.log(12412)
   connection.query(`SELECT * FROM todos WHERE id_user=?`, id_user,
     (error, rows) => {
       if (error) {
@@ -57,7 +58,7 @@ exports.editTodos = async (req, res) => {
   if (!todo) {
     return res.status(400).json({ status: 400, message: "Tidak boleh kosong" })
   }
-  connection.query(`UPDATE todos SET todo=? WHERE id_user? AND id_todo? `, [todo, id_user, id_todo],
+  connection.query(`UPDATE todos SET todo=? WHERE id_user=? AND id_todo=? `, [todo, id_user, id_todo],
     (error, rows) => {
       if (error) {
         console.log(error);
